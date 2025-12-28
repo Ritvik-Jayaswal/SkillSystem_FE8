@@ -92,7 +92,7 @@ ldrb 	r0, [r0]
 cmp 	r0, #0x0 	@check if a unit is on current space
 beq EmptySpace
 ldr 	r1, =gActiveUnitID
-ldrb 	r1, [r0]
+ldrb 	r1, [r1]
 cmp 	r0, r1 		@check if active unit is the one on the current space
 bne x_reloop
 EmptySpace:
