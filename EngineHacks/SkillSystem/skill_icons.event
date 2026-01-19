@@ -899,6 +899,9 @@ ORG SkillIcon(MoonlightID)
 ORG SkillIcon(ChargePlusID)
 #incbin "SkillIcons/ChargePlus.dmp"
 
+ORG SkillIcon(QuickcastID)
+#incbin "SkillIcons/ChargePlus.dmp" // Placeholder - replace with custom Quickcast icon
+
 ORG SkillIcon(SkyguardID)
 #incbin "SkillIcons/Skyguard.dmp"
 

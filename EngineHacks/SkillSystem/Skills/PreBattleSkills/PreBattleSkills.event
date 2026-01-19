@@ -339,6 +339,12 @@ WORD ChargePlusID
 POIN prMovGetter
 
 ALIGN 4
+Quickcast:
+#incbin "Quickcast/Quickcast.dmp"
+POIN SkillTester
+WORD QuickcastID
+
+ALIGN 4
 ForeignPrincess:
 #incbin "ForeignPrincess/ForeignPrincess.dmp"
 POIN SkillTester

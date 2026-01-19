@@ -42,24 +42,28 @@ ldrb r1,[r3]
 b FinishCharge
 
 AltMovementCheck:
-@we need trigonometry to get our movement distance since we can't use spaces moved
-@this only works assuming straight lines but not many reasonable other options
+@Manhattan distance: |x2-x1| + |y2-y1|
+@This correctly matches FE's tile-based movement
 ldr r6,=#0x202BE48 @active unit position (has starting coords)
-@sqrt( (x2-x1)^2 + (y2-y1)^2 )
-@sqrt can be done with swi 8
 
-ldrb r0,[r4,#0x10] @x1
-ldrh r1,[r6] @x2
-sub r1,r0 @x2-x1
-mul r1,r1 @^2
-mov r2,r1
-ldrb r0,[r4,#0x11] @y1
-ldrh r1,[r6,#0x2] @y2
-sub r1,r0 @y2-y1
-mul r1,r1 @^2
-add r0,r1,r2 @(x2-x1)^2 + (y2-y1)^2
-swi 8 @sqrt
-mov r1,r0 @for consistency in finishing
+@Calculate |x2-x1|
+ldrb r0,[r4,#0x10] @x1 (current X)
+ldrh r1,[r6] @x2 (starting X)
+sub r1,r0 @r1 = x2 - x1
+bpl PosX @if positive, skip negation
+neg r1,r1 @make positive
+PosX:
+mov r3,r1 @r3 = |x2-x1|
+
+@Calculate |y2-y1|
+ldrb r0,[r4,#0x11] @y1 (current Y)
+ldrh r1,[r6,#0x2] @y2 (starting Y)
+sub r1,r0 @r1 = y2 - y1
+bpl PosY @if positive, skip negation
+neg r1,r1 @make positive
+PosY:
+
+add r1,r3 @r1 = |x2-x1| + |y2-y1| = Manhattan distance
 
 FinishCharge:
 

@@ -542,6 +542,9 @@
 //By Sme
 #define ChargePlusID 168
 
+//Quickcast: If attacking with a magic tome at 1 range, gain brave effect.
+#define QuickcastID 169
+
 //Critical Force: Base critical is Skl * 1.5.
 //Author Unknown (Initial Commit)
 #define CriticalForceID 213
