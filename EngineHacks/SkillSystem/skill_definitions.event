@@ -623,7 +623,7 @@
 
 //Frenzy: For every 4 damage taken, +1 to damage dealt.
 //By Tequila
-#define FrenzyID 169
+#define FrenzyID 255
 
 //Hawkeye: User will always hit the enemy.
 //By SD9k
